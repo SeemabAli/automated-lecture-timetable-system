@@ -28,6 +28,11 @@ export const courseSchema = z.object({
   title: z.string().min(3, "Course title is required"),
   enrollment: z.number().min(1, "Enrollment must be at least 1"),
   multimediaRequired: z.boolean(),
+  creditHours: z
+    .number()
+    .min(1, "Credit hours must be at least 1")
+    .max(6, "Credit hours cannot exceed 6"),
+  department: z.string().min(2, "Department is required"),
 });
 
 export const classroomSchema = z.object({

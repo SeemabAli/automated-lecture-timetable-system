@@ -8,9 +8,12 @@ export async function GET() {
 
   try {
     const timetable = await Timetable.find({})
-      .populate("course", "code title")
-      .populate("faculty", "name")
-      .populate("classroom", "classroomId building")
+      .populate(
+        "course",
+        "code title creditHours enrollment department multimediaRequired"
+      )
+      .populate("faculty", "name designation department")
+      .populate("classroom", "classroomId building capacity multimedia")
       .populate("timeSlot", "day start end")
       .lean();
 
